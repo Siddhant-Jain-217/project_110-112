@@ -31,3 +31,26 @@ function speak() {
     var utterThis = new SpeechSynthesisUtterance(speak_data);
     synth.speak(utterThis);
 }
+
+function gotResults(error, results){
+ if(error){
+     console.error(error);
+ }
+ else{
+     console.log(results);
+     document.getElementById("result_gesture_name").innerHTML = results[0].label;
+     prediction = results[0].label;
+     speak();
+     if(results[0].label == "amazing"){
+         document.getElementById("result_emoji").innerHTML = "&#128076;";
+        }
+     if(results[0].label == "best"){
+         document.getElementById("result_emoji").innerHTML = "&#128077";
+        
+     }
+     if(results[0].label == "victory"){
+         document.getElementById("result_emoji").innerHTML = "&#9996;";
+        
+     }
+ }
+}
